@@ -1,0 +1,28 @@
+const { mongoose } = require("../config/db");
+const { User } = require("../models/User");
+const {validationResult}= require('express-validator');
+
+
+let usercontoller = (req,res)=>{
+
+    let errors = validationResult(req)
+
+     const userobject = new User({name:req.query.name});
+    
+     userobject.save().then((d)=>{
+    
+        res.status(200).json({
+            msg:"ok"
+        });  
+     }).catch(()=>{
+        res.status(404).json({
+            msg:"error"
+        })
+     });
+
+     
+}
+
+
+
+exports.usercontoller = usercontoller;

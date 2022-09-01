@@ -1,0 +1,6 @@
+const { check } = require('express-validator');
+let userValidator =[
+    check('name','first name is required').notEmpty()
+]
+
+exports.userValidator = userValidator;
